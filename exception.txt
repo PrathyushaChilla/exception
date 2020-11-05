@@ -1,0 +1,72 @@
+Exception
+
+create table student(
+    ID int,
+     Name varchar(20),
+     Age int,
+     Address varchar(20),
+     Salary int
+    );
+	
+insert into student values(1,'prathyusha',23,'andhra pradesh',25000);
+insert into student values(2,'supraja',26,'kadapa',50000);
+insert into student values(3,'damu',31,'tirupathi',40000);
+insert into student values(4,'joshvika',10,'rajampet',250000);
+
+DECLARE 
+   s_id studentS.id%type := 8; 
+   s_name studentS.Name%type; 
+   s_loc studentS.loc%type; 
+BEGIN 
+   SELECT  name, loation INTO  s_name, s_loc 
+   FROM students 
+   WHERE id = s_id;  
+   DBMS_OUTPUT.PUT_LINE ('Name: '||  s_name); 
+   DBMS_OUTPUT.PUT_LINE ('Location: ' || s_loc);
+EXCEPTION 
+   WHEN no_data_found THEN 
+      dbms_output.put_line('No such student!'); 
+   WHEN others THEN 
+      dbms_output.put_line('Oops, Error!'); 
+END; 
+
+
+
+DECLARE
+       var_dividend NUMBER :=10;
+       var_divisor  NUMBER :=0
+       var_result NUMBER;
+       ex-DivZero EXCEPTION
+BEGIN
+IF var_divisor =0 THEN
+RAISE ex-DivZero;
+END IF;
+Var_result := var_dividend/var_divisor;
+DBMS_OUTPUT.PUT_LINE (‘Result = ‘ || var_result);
+BEGIN
+IF var_divisor =0 THEN
+RAISE ex-DivZero;
+END IF;
+Var_result := var_dividend/var_divisor;
+DBMS_OUTPUT.PUT_LINE (‘Result = ‘ || var_result);
+END;
+
+
+
+DECLARE  
+   c_id customers.id%type := 5;  
+   c_name  customers.name%type;  
+   c_addr customers.address%type;  
+BEGIN  
+   SELECT  name, address INTO  c_name, c_addr  
+   FROM customers  
+   WHERE id = c_id;  
+DBMS_OUTPUT.PUT_LINE ('Name: '||  c_name);  
+ DBMS_OUTPUT.PUT_LINE ('Address: ' || c_addr);  
+EXCEPTION  
+   WHEN no_data_found THEN  
+      dbms_output.put_line('No such customer!');  
+   WHEN others THEN  
+      dbms_output.put_line('Error!');  
+END;  
+/   

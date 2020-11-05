@@ -1,0 +1,72 @@
+Declare
+a number(5);
+b number(5);
+c number(5);
+Begin
+a:=&a;
+b:=&b;
+c:=a+b;
+dbms_output.put_line('sum is:'||c);
+c:=a-b;
+dbms_output.put_line('substraction is:'||c);
+c:=a*b;
+dbms_output.put_line('multiplication is:'||c);
+c:=a/b;
+dbms_output.put_line('Division is:'||c);
+End;
+
+Declare
+Day varchar2(10):=’&day’;
+Begin
+If(day=’sunday’)then
+Dbms_output.put_line(‘Sunday is holiday’);
+End if;
+End;
+
+DECLARE
+N NUMBER(5):=&N;
+BEGIN
+IF N MOD 2 = 0 THEN
+DBMS_OUTPUT.PUT_LINE(' THE NUMBER IS EVEN');
+ELSE
+DBMS_OUTPUT.PUT_LINE(' THE NUMBER IS ODD');
+END IF;
+END;
+
+Declare
+gender char:='&gender';
+age number(2):=&age;
+charge number(3,1);
+begin
+if(gender='m')then
+if(age>=25)then
+charge:=0.10;
+else
+charge:=0.5;
+end if;
+else
+if(age>=25)then
+charge:=0.5;
+else
+charge:=0.06;
+end if;
+end if;
+dbms_output.put_line('gender:'||gender);
+dbms_output.put_line('age:'||to_char(age));
+dbms_output.put_line('charge:'||to_char(charge));
+end;
+
+Declare
+Count1 number(2);
+Sum1 number(3):=0;
+Avg1 number (3,1);
+Begin
+Count1:=1;
+Loop
+Sum1:=sum1+count1;
+Count1:=count1+1;
+Exit when count1>10;
+End loop;
+Avg1:=sum1/(count1-1);
+Dbms_output.put_line(‘avg of 1 to 10 is:’||to_char(avg1));
+End;
